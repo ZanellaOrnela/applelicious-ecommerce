@@ -11,6 +11,9 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        'custom-green': '#D5F26D',
+        'custom-pink': '#F23D6D',
+        'custom-lime-pastel': '#EDFFAB',
       },
     },
   },

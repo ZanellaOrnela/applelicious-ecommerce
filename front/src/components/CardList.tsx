@@ -1,14 +1,20 @@
 import productsToPreLoad from '@/helpers/productsToPreload';
 import Card from './Card';
+import { getProductsDB } from '@/helpers/productHelper';
+import Link from 'next/link';
 
-const CardList = () => {
+const CardList = async  () => {
+  const products = await getProductsDB()
   return (
     <div>
-      {productsToPreLoad &&
-        productsToPreLoad?.map((product) => {
+      {products &&
+        products?.map((product) => {
           return (
-            <Card key={product.id} {...product} />
+            <Link key={product.id} href={`/product/${product.id}`}>
+              <Card key={product.id} {...product} />
+            </Link>
           );
+          
         })}
     </div>
   );

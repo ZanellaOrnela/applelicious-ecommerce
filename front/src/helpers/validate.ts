@@ -1,46 +1,34 @@
-import { ILoginErrors, ILoginProps } from "@/types";
+import { ILoginErrors, ILoginProps, IRegisterErrors, IRegisterProps } from "@/types";
 
-export function validateLogin(values: ILoginProps) {
-    const errors: ILoginErrors = {};
-    if (!values.email) {
-        errors.email = 'Required';
-    } else if (!/\S+@\S+\.\S+/.test(values.email)) {
-        errors.email = 'Invalid email address';
-    }
-    if (!values.password) {
-        errors.password = 'Required';
-    } else if (values.password.length < 6) {
-        errors.password = 'Password must be 6 characters long or more';
-    }
-    return errors;
+// Function to validate required fields with a minimum length
+function validateField(value: string, fieldName: string, minLength: number = 3): string | undefined {
+    if (!value) return `${fieldName} es obligatorio/a`;
+    if (value.length < minLength) return `${fieldName} debe tener al menos ${minLength} caracteres`;
+    return undefined;
 }
 
-export function validateRegister(values: any) {
-    const errors: any = {};
-    if (!values.email) {
-        errors.email = 'Required';
-    } else if (!/\S+@\S+\.\S+/.test(values.email)) {
-        errors.email = 'Invalid email address';
-    }
-    if (!values.password) {
-        errors.password = 'Required';
-    } else if (values.password.length < 6) {
-        errors.password = 'Password must be 6 characters long or more';
-    }
-    if (!values.name) {
-        errors.name = 'Required';
-    } else if (values.name.length < 3) {
-        errors.name = 'Name must be 3 characters long or more';
-    }
-    if (!values.address) {
-        errors.address = 'Required';
-    } else if (values.address.length < 3) {
-        errors.address = 'Address must be 3 characters long or more';
-    }
-    if (!values.phone) {
-        errors.phone = 'Required';
-    } else if (values.phone.length < 3) {
-        errors.phone = 'Phone must be 3 characters long or more';
-    }
-    return errors;
+
+function validateEmail(email: string): string | undefined {
+    if (!email) return "El email es obligatorio";
+    if (!/^\S+@\S+\.\S+$/.test(email)) return "Formato de email inválido";
+    return undefined;
+}
+
+
+export function validateLogin(values: ILoginProps): ILoginErrors {
+    return {
+        email: validateEmail(values.email) || "",
+        password: validateField(values.password, "La contraseña", 6) || ""
+    };
+}
+
+
+export function validateRegister(values: IRegisterProps): IRegisterErrors {
+    return {
+        email: validateEmail(values.email) || "",
+        password: validateField(values.password, "La contraseña", 6) || "",
+        name: validateField(values.name, "El nombre") || "",
+        address: validateField(values.address, "La dirección") || "",
+        phone: validateField(values.phone, "El teléfono") || ""
+    };
 }

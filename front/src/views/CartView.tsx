@@ -13,7 +13,7 @@ const CartView = () => {
 
   useEffect(() => {
     !userData && router.push("/login")
-  }, [])
+  }, [userData])
 
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("cart") || "[]")
@@ -56,7 +56,7 @@ const CartView = () => {
     </div>
     <div>
       Total: {total}
-      <button onSubmit={handleCheckout}>Checkout</button>
+      <button onClick={handleCheckout}>Checkout</button>
     </div>
   </div>
   )

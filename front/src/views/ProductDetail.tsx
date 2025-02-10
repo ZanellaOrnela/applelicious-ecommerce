@@ -77,7 +77,7 @@ const ProductDetail: React.FC<IProduct> = ({
     <div className="max-w-5xl mx-auto p-6  bg-gradient-to-br from-gray-50 to-gray-200 rounded-3xl shadow-lg">
     <div className="flex flex-col md:flex-row gap-8 items-center">
       
-      {/* Imagen del producto */}
+      // Imagen del producto 
       <div className="md:w-1/2">
         <img
           src={image}
@@ -86,14 +86,14 @@ const ProductDetail: React.FC<IProduct> = ({
         />
       </div>
   
-      {/* Información del producto */}
+      // Información del producto 
       <div className="md:w-1/2 flex flex-col gap-4">
         <h2 className="text-4xl text-custom-pink font-extrabold">{name}</h2>
         <p className="text-gray-600 leading-relaxed">{description}</p>
         <p className="text-xs text-gray-400 font-medium">Stock: {stock}</p>
         <p className="text-2xl font-semibold text-gray-800">Price: ${price}</p>
   
-        {/* Botón Agregar al Carrito */}
+        // Botón Agregar al Carrito 
         <button
           onClick={handleAddToCart}
           disabled={stock <= 0}

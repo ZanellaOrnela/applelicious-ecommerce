@@ -16,19 +16,35 @@ function validateEmail(email: string): string | undefined {
 
 
 export function validateLogin(values: ILoginProps): ILoginErrors {
-    return {
-        email: validateEmail(values.email) || "",
-        password: validateField(values.password, "La contraseña", 6) || ""
-    };
-}
+    const errors: Partial<ILoginErrors> = {};
 
+    const emailError = validateEmail(values.email);
+    if (emailError) errors.email = emailError;
+
+    const passwordError = validateField(values.password, "La contraseña", 6);
+    if (passwordError) errors.password = passwordError;
+
+    return errors;
+}
 
 export function validateRegister(values: IRegisterProps): IRegisterErrors {
-    return {
-        email: validateEmail(values.email) || "",
-        password: validateField(values.password, "La contraseña", 6) || "",
-        name: validateField(values.name, "El nombre") || "",
-        address: validateField(values.address, "La dirección") || "",
-        phone: validateField(values.phone, "El teléfono") || ""
-    };
+    const errors: Partial<IRegisterErrors> = {};
+
+    const emailError = validateEmail(values.email);
+    if (emailError) errors.email = emailError;
+
+    const passwordError = validateField(values.password, "La contraseña", 6);
+    if (passwordError) errors.password = passwordError;
+
+    const nameError = validateField(values.name, "El nombre");
+    if (nameError) errors.name = nameError;
+
+    const addressError = validateField(values.address, "La dirección");
+    if (addressError) errors.address = addressError;
+
+    const phoneError = validateField(values.phone, "El teléfono");
+    if (phoneError) errors.phone = phoneError;
+
+    return errors;
 }
+

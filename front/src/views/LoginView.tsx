@@ -1,10 +1,12 @@
-'use client';
+'use client'
+
 import * as React from 'react';
 import { validateLogin } from '../helpers/validate';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { useAuth } from '@/context/authContext';
 import { login } from '@/helpers/authHelpers';
 import { useRouter } from 'next/navigation';
+import Cookies from 'js-cookie'
 
 const LoginView = () => {
   const { setUserData } = useAuth();
@@ -13,7 +15,7 @@ const LoginView = () => {
   return (
     <div className="min-h-52 text-gray-900 flex justify-center items-center">
       <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow-lg rounded-3xl flex flex-col lg:flex-row w-full">
-        {/* Lado izquierdo: centrado vertical y horizontal */}
+        
         <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12 flex flex-col justify-center items-center">
           <h1 className="text-2xl xl:text-3xl font-extrabold mb-6">
             Logueate a Applelicious
@@ -34,9 +36,10 @@ const LoginView = () => {
                 const { token, user } = response;
 
                 setUserData({ token, user });
+                Cookies.set("token", token)
                 router.push('/');
-              } catch (error: any) {
-                setErrors({ email: error.message });
+             } catch (error: any) {
+                setErrors({ email: error.message }); 
               } finally {
                 setSubmitting(false);
               }

@@ -1,4 +1,5 @@
-'use client';
+'use client'
+
 import { IUserSession } from '@/types';
 import { useState, useEffect, createContext, useContext } from 'react';
 

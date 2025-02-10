@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="w-full">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="py-14 grid grid-cols-12 gap-x-5 gap-y-8">
-          <div className="col-span-full xl:col-span-3 relative bg-custom-pink rounded-3xl gap-12 p-6 xl:w-72 h-96 flex flex-col justify-center items-center">
+          <div className="col-span-full xl:col-span-3 relative bg-custom-pink rounded-3xl gap-6 p-6 xl:w-72 h-50 flex flex-col justify-center items-center">
             <a className="flex justify-center lg:justify-start">
               <p className="font-bold text-xl">Applelicious</p>
             </a>
@@ -66,8 +66,8 @@ const Footer = () => {
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
                     d="M13.4346 1.0181C14.0684 1.18926 14.5665 1.68869 14.7349 2.32177C15.0413 3.47069 15.0413 5.86935 15.0413 5.86935C15.0413 5.86935 15.0413 8.26801 14.7349 9.41693C14.5642 10.0524 14.0661 10.5518 13.4346 10.7206C12.2886 11.0278 7.69058 11.0278 7.69058 11.0278C7.69058 11.0278 3.09491 11.0278 1.94657 10.7206C1.31277 10.5494 0.814613 10.05 0.646222 9.41693C0.339844 8.26801 0.339844 5.86935 0.339844 5.86935C0.339844 5.86935 0.339844 3.47069 0.646222 2.32177C0.816952 1.68635 1.31511 1.18692 1.94657 1.0181C3.09491 0.710938 7.69058 0.710938 7.69058 0.710938C7.69058 0.710938 12.2886 0.710938 13.4346 1.0181ZM10.041 5.86935L6.22178 8.08043V3.65827L10.041 5.86935Z"
                     fill="#F23D6D"
                   />
@@ -93,10 +93,10 @@ const Footer = () => {
             <div className="flex gap-6 xl:gap-12 max-xl:justify-center">
               <ul className="text-gray-600 transition-all duration-500 grid gap-6">
                 <li>
-                  <a >Inicio</a>
+                  <a href="/">Inicio</a>
                 </li>
                 <li>
-                  <a >FAQs</a>
+                  <a href="/">Productos</a>
                 </li>
                 
                 
@@ -104,11 +104,11 @@ const Footer = () => {
               <ul className="text-gray-600 transition-all duration-500 grid gap-6">
                 
                 <li>
-                  <a >Nosotros </a>
+                  <a href="/dashboard">Perfil </a>
                 </li>
                 
                 <li>
-                  <a >Productos</a>
+                  <a href="/cart">Carrito</a>
                 </li>
               </ul>
             </div>

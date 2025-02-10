@@ -1,8 +1,9 @@
-'use client';
+'use client'
 
-import { IProduct } from '@/types';
+
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
+
 import { useAuth } from '@/context/authContext';
 import { getOrders } from '@/helpers/ordersHelper';
 import { IOrder } from '@/types';
@@ -25,11 +26,11 @@ const OrdersView = () => {
     } else {
       loadOrders(); // Carga las órdenes si el usuario tiene un token
     }
-  }, [userData, router]); // Asegúrate de incluir las dependencias correctas
+  }, [userData, router]); 
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Your orders:</h1>
+      <h1 className="text-2xl text-gray-700 font-bold mb-4">Tus ordenes</h1>
       {orders.length ? (
         orders.map((item: IOrder) => (
           <div
@@ -37,18 +38,18 @@ const OrdersView = () => {
             className="bg-white p-4 rounded-lg shadow-md mb-4"
           >
             <p className="text-gray-600">
-              <span className="font-semibold">Status:</span>{' '}
+              <span className="font-semibold">Estado:</span>{' '}
               {item.status.toLocaleUpperCase()}
             </p>
             <p className="text-gray-600">
-              <span className="font-semibold">Date:</span>{' '}
+              <span className="font-semibold">Fecha:</span>{' '}
               {new Date(item.date).toLocaleString()}
             </p>
           </div>
         ))
       ) : (
         <div className="text-gray-500">
-          You don't have orders yet, go shopping!
+          ¡Aún no tienes pedidos, ve de compras!
         </div>
       )}
     </div>

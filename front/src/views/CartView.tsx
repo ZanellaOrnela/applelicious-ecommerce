@@ -112,49 +112,7 @@ const CartView = () => {
 
               
               <div className="flex justify-between items-center">
-                <div className="flex items-center gap-4">
-                  <button className="group rounded-full border-2 border-gray-200 shadow-sm p-2.5 flex items-center justify-center bg-white hover:bg-gray-50 focus:outline-none transition-all duration-500">
-                    <svg
-                      className="stroke-gray-900 group-hover:stroke-black"
-                      width="18"
-                      height="19"
-                      viewBox="0 0 18 19"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M4.5 9.5H13.5"
-                        strokeWidth="1.6"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </button>
-                  <input
-                    type="text"
-                    id="number"
-                    className="border-2 border-gray-300 rounded-full w-10 aspect-square outline-none text-gray-900 font-semibold text-sm py-1.5 px-3 bg-gray-100 text-center"
-                    placeholder="1"
-                    defaultValue="1"
-                  />
-                  <button className="group rounded-full border-2 border-gray-200 shadow-sm p-2.5 flex items-center justify-center bg-white hover:bg-gray-50 focus:outline-none transition-all duration-500">
-                    <svg
-                      className="stroke-gray-900 group-hover:stroke-black"
-                      width="18"
-                      height="19"
-                      viewBox="0 0 18 19"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M3.75 9.5H14.25M9 14.75V4.25"
-                        strokeWidth="1.6"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </button>
-                </div>
+                
                 <h6 className="text-gray-900 font-manrope font-bold text-2xl leading-9 text-right">
                   ${item.price}
                 </h6>

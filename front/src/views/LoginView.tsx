@@ -39,7 +39,7 @@ const LoginView = () => {
                 Cookies.set("token", token)
                 router.push('/');
              } catch (error: any) {
-                setErrors({ email: error.message }); 
+                setErrors({ email: error.message, password: error.message }); 
               } finally {
                 setSubmitting(false);
               }

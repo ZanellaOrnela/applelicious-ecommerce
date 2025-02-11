@@ -18,10 +18,10 @@ const CartView = () => {
 
   useEffect(() => {
     if (!userData) {
-      // Redirigir al login si no hay usuario logueado
+      
       router.push('/login');
     } else {
-      // Obtener el carrito del localStorage
+      
       const storedCart = JSON.parse(localStorage.getItem('cart') || '[]');
       if (storedCart) {
         let totalCart = 0;
@@ -32,8 +32,7 @@ const CartView = () => {
         setCart(storedCart);
       }
     }
-  }, [userData]); // Aseguramos que este efecto se ejecute solo cuando cambia el userData
-  
+  }, [userData]); 
 
   const handleCheckout = async () => {
     const idProducts = cart?.map((product) => product.id)
@@ -45,19 +44,30 @@ const CartView = () => {
     }
   }
 
+  const handleRemove = (productId: number) => {
+    const cartFiltered = cart?.filter((product) => product.id !== productId);
+    setCart(cartFiltered);
+    localStorage.setItem("cart", JSON.stringify(cartFiltered));
+  
+    // Recalcular el total
+    const newTotal = cartFiltered.reduce((acc, item) => acc + item.price, 0);
+    setTotal(newTotal);
+  };
+  
+
   return (
   <section className=" py-4 relative">
     <div className="w-full max-w-7xl px-4 md:px-5 lg:px-6 mx-auto">
     <h1 className="text-2xl text-gray-700 font-bold mb-4">Carrito de compras</h1>
 
-      // Lista de productos en el carrito 
+      
       {cart.length ? (
         cart.map((item: IProduct) => (
           <div
             key={item.id}
             className="rounded-3xl  drop-shadow-lg p-4 lg:p-8 grid grid-cols-12 mb-8 max-lg:max-w-lg max-lg:mx-auto gap-y-4 bg-white"
           >
-            // Imagen del producto 
+            
             <div className="col-span-12 lg:col-span-2 img box">
               <img
                 src={item.image || "https://via.placeholder.com/180"}
@@ -66,13 +76,15 @@ const CartView = () => {
               />
             </div>
 
-            // Detalles del producto 
+            
             <div className="col-span-12 lg:col-span-10 detail w-full lg:pl-3">
               <div className="flex items-center justify-between w-full mb-4">
                 <h5 className="font-manrope font-bold text-2xl leading-9 text-gray-900">
                   {item.name}
                 </h5>
-                <button className="rounded-full group flex items-center justify-center focus:outline-none">
+                <button 
+                onClick = {() => handleRemove(item.id)}
+                className="rounded-full group flex items-center justify-center focus:outline-none">
                   <svg
                     width="34"
                     height="34"
@@ -156,7 +168,7 @@ const CartView = () => {
         </div>
       )}
 
-      // Sección de resumen y Checkout 
+      
       <div className="flex flex-col md:flex-row items-center justify-between lg:px-6 pb-6 border-b border-gray-200 max-lg:max-w-lg max-lg:mx-auto">
         <h5 className="text-gray-900 font-manrope font-semibold text-2xl leading-9 w-full max-md:text-center max-md:mb-4">
           Subtotal
